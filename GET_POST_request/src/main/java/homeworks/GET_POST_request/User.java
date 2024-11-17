@@ -1,5 +1,6 @@
 package homeworks.GET_POST_request;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +20,11 @@ public class User {
     private Date datetime;
 
     public String toString() {
-        return "{login='" + login + "', password='" + password + "', datetime='" + datetime + "'}";
+        if (datetime == null) {
+            return "{login='" + login + "', password='" + password + "'}";
+        } else {
+            return "{login='" + login + "', password='" + password + "', datetime='" + datetime + "'}";
+        }
     }
 
     public User(String login, String password) {

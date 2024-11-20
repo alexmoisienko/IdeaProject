@@ -1,8 +1,8 @@
 package homeworks.GET_POST_request;
 
-import lombok.AllArgsConstructor;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
@@ -10,7 +10,11 @@ import java.util.Date;
 @Getter
 @Setter
 public class User {
+    @NotNull
+    @NotEmpty
     private String login;
+    @NotNull
+    @NotEmpty
     private String password;
     private Date datetime;
 

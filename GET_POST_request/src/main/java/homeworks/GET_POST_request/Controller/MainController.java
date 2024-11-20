@@ -1,6 +1,7 @@
 package homeworks.GET_POST_request.Controller;
 
 import homeworks.GET_POST_request.User;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ public class MainController {
     }
 
     @PostMapping("/api/main")
-    public ResponseEntity<User> POST_main(@RequestBody User user) {
+    public ResponseEntity<User> POST_main(@Valid @RequestBody User user) {
 
         User user1 = new User(user.getLogin(), user.getPassword());
 

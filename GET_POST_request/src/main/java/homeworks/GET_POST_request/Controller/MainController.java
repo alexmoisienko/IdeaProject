@@ -1,28 +1,30 @@
 package homeworks.GET_POST_request.Controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import homeworks.GET_POST_request.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Date;
 
 @RestController
 public class MainController {
-    @Autowired
-    private ObjectMapper ObjectMapper;
 
     @GetMapping("/api/main")
-    public String GET_main() {
+    public ResponseEntity<User> GET_main() {
+
         User user = new User("qwerty", "123456");
 
-        return user.toString();
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @PostMapping("/api/main")
-    public String POST_main(@RequestBody User user) {
-        user.setDatetime(new Date());
-        return user.toString();
+    public ResponseEntity<User> POST_main(@RequestBody User user) {
+
+        User user1 = new User(user.getLogin(), user.getPassword());
+
+        return new ResponseEntity<>(user1, HttpStatus.CREATED);
 
     }
 }
+// аннотации стринга валид валидэйт
+//
+// 2 postmapping

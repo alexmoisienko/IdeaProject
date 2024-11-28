@@ -25,19 +25,17 @@ public class MainController {
 
         User user1 = new User(user.getLogin(), user.getPassword());
 
-        return new ResponseEntity<>(user1, HttpStatus.CREATED);
+        return new ResponseEntity<>(user1, HttpStatus.OK);
 
     }
 
     @PostMapping("/api/main/map")
     public ResponseEntity<?> POST_main_map(@RequestBody Map<String, @NotEmpty String> map) {
 
-        String login = map.get("login");
-        String password = map.get("password");
+        User user = new User(map.get("login"), map.get("password"));
 
-        if (login != null && password != null) {
-            User user = new User(login, password);
-            return new ResponseEntity<>(user, HttpStatus.CREATED);
+        if (user.getLogin() != null && user.getPassword() != null) {
+            return new ResponseEntity<>(user, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

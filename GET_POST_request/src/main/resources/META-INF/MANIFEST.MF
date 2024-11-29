@@ -1,3 +1,0 @@
-Manifest-Version: 1.0
-Main-Class: homeworks.GET_POST_request.GetPostRequestApplication
-
